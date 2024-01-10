@@ -15,5 +15,3 @@ def roman_to_int(roman_string):
             solution += current_val
         prev_val = current_val
     return solution
-
-
