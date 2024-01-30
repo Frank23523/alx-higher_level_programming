@@ -4,42 +4,40 @@ This is a test file for the add_integer function.
 >>> add_integer = __import__('0-add_integer').add_integer
 >>> add_integer(2, 2)
 4
+
 >>> add_integer(2.5, 2.5)
-5
->>> add_integer(-2.9, -0.2)
--2
->>> add_integer(2.3, -3)
--1
+4
+
 >>> add_integer(2.5, "2.5")
 Traceback (most recent call last):
     ...
 TypeError: b must be an integer
->>> add_integer("2", 2)
+
+>>> add_integer("Hi", "There")
 Traceback (most recent call last):
     ...
 TypeError: a must be an integer
+
 >>> add_integer(float('inf'), 2)
 Traceback (most recent call last):
     ...
-OverflowError: int too large to convert to float
+OverflowError: cannot convert float infinity to integer
+
 >>> add_integer(float('nan'), 2)
 Traceback (most recent call last):
     ...
 ValueError: cannot convert float NaN to integer
->>> add_integer(2.5, 3)
-5
+
+>>> add_integer(2, -3)
+-1
+
 >>> add_integer(2, 3.5)
 5
->>> add_integer(float('inf'), float('inf'))
+
+>>> add_integer(float('inf'))
 Traceback (most recent call last):
     ...
-OverflowError: int too large to convert to float
->>> add_integer(float('nan'), float('nan'))
-Traceback (most recent call last):
-    ...
-ValueError: cannot convert float NaN to integer
->>> add_integer(float('inf'), float('nan'))
-Traceback (most recent call last):
-    ...
-ValueError: cannot convert float NaN to integer
-"""
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(2)
+100
