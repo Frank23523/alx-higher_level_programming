@@ -6,6 +6,10 @@ This is a test file for the add_integer function.
 4
 >>> add_integer(2.5, 2.5)
 5
+>>> add_integer(-2.9, -0.2)
+-2
+>>> add_integer(2.3, -3)
+-1
 >>> add_integer(2.5, "2.5")
 Traceback (most recent call last):
     ...
@@ -39,4 +43,3 @@ Traceback (most recent call last):
     ...
 ValueError: cannot convert float NaN to integer
 """
-
