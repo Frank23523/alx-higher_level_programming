@@ -1,0 +1,33 @@
+"""
+This is a test file for the text_indentation function.
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("This is a test. Is it working? Yes, it is.")
+This is a test.
+
+Is it working?
+
+Yes, it is.
+>>> text_indentation("This is a test. Is it working? Yes, it is. ")
+This is a test.
+
+Is it working?
+
+Yes, it is.
+>>> text_indentation("This is a test. Is it working? Yes, it is.  ")
+This is a test.
+
+Is it working?
+
+Yes, it is.
+>>> text_indentation("This is a test. Is it working? Yes, it is.   ")
+This is a test.
+
+Is it working?
+
+Yes, it is.
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+"""
