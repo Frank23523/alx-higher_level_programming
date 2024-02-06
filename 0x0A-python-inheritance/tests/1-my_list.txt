@@ -26,6 +26,13 @@
 >>> my_list.print_sorted()
 [1, 2, 3, 7]
 >>>
+>>> my_list2 = MyList()
+>>> my_list2.append(6)
+>>> my_list2.append(6)
+>>> my_list2.append(6)
+>>> my_list2.print_sorted()
+[6, 6, 6]
+>>>
 >>> empty = []
 >>> my_list = MyList(empty)
 >>> my_list.print_sorted()
@@ -37,11 +44,4 @@
 [1]
 >>> print(my_list)
 [1]
->>>
->>> my_list2 = MyList()
->>> my_list2.append(6)
->>> my_list2.append(6)
->>> my_list2.append(6)
->>> my_list2.print_sorted()
-[6, 6, 6]
 >>>
