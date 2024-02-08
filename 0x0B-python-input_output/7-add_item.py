@@ -24,5 +24,7 @@ if __name__ == "__main__":
         existing_data = load_from_json_file("add_item.json")
     except FileNotFoundError:
         existing_data = []
-    existing_data.extend(sys.argv[1:])
+    new_items = sys.argv[1:]
+    existing_data.extend(new_items)
     save_to_json_file(existing_data, "add_item.json")
+    print(f"Added {len(new_items)} items to add_item.json.")
