@@ -89,3 +89,15 @@ class Rectangle(Base):
         """ Overriding __str__ """
         return (f"[Rectangle] ({self.id}) {self.x}/{self.y}"
                 f" - {self.width}/{self.height}")
+
+    def update(self, *args):
+        """
+        Assigns an argument to each attribute
+
+        Args:
+            *args: variable arguments in order: id, width, height, x, y
+        """
+        if args:
+            attrs = ["id", "width", "height", "x", "y"]
+            for i, value in enumerate(args):
+                setattr(self, attrs[i], value)
