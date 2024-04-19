@@ -2,17 +2,35 @@
 """
 This script lists all states with a name starting with N (upper N)
 """
-
-
-import sys
 import MySQLdb
+import sys
 
 
 if __name__ == "__main__":
-    # Connect to MySQL server
-    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
-    cursor = db.cursor()
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    db_name = sys.argv[3]
 
-    # Execute the SQL query to retrieve all states sorted by id
-    cursor.execute("SELECT * FROM `states` ORDER BY `id`")
-    [print(state) for state in cursor.fetchall() if state[1][0] == "N"]
+    try:
+        nection = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=mysql_username,
+            passwd=mysql_password,
+            db=db_name,
+            charset="utf8"
+        )
+    except MySQLdb.Error as mysqlerr:
+        print("Error connecting to database: {}".format(mysqlerr))
+        sys.exit(1)
+
+    cursor = nection.cursor()
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' \
+            ORDER BY states.id ASC")
+    rows = cursor.fetchall()
+
+    for row in rows:
+        print(row)
+
+    cursor.close()
+    nection.close()
