@@ -20,17 +20,25 @@ if __name__ == '__main__':
             passwd=sys.argv[2],
             db=sys.argv[3]
             )
-    cursor = nection.cursor()
-    query = """
-    SELECT GROUP_CONTACT(cities.name SEPARATOR ', ')
-    FROM cities
-    JOIN states ON cities.state_id = states.id
-    WHERE states.name = %s
-    """
-    cursor.execute(query, (state_name,))
-    result = cursor.fetchone()[0]
 
-    if display:
-        print(result)
-    else:
-        print("")
+    with nection.cursor() as cursor:
+        cursor.execute("""
+            SELECT
+                cities.id, cities.name
+            FROM
+                cities
+            JOIN
+                states
+            ON
+                cities.state_id = states.id
+            WHERE
+                states.name LIKE BINARY %(state_name)s
+            ORDER BY
+                cities.id ASC
+        """, {
+            'state_name': sys.argv[4]
+        })
+        rows = cursor.fetchall()
+
+    if rows:
+        print(", ".join([row[1] for row in rows_selected]))
