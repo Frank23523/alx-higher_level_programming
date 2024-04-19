@@ -34,4 +34,4 @@ if __name__ == '__main__':
     rows = cursor.fetchall()
 
     if rows:
-        print(", ".join([row[1] for row in rows]))
+        print(", ".join([row[2] for row in rows if row[4] == sys.argv[4]]))
