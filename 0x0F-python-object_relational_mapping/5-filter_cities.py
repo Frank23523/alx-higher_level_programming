@@ -21,8 +21,8 @@ if __name__ == '__main__':
             db=sys.argv[3]
             )
 
-    with nection.cursor() as cursor:
-        cursor.execute("""
+    cursor = nection.cursor()
+    cursor.execute("""
             SELECT
                 cities.id, cities.name
             FROM
@@ -38,7 +38,7 @@ if __name__ == '__main__':
         """, {
             'state_name': sys.argv[4]
         })
-        rows = cursor.fetchall()
+    rows = cursor.fetchall()
 
     if rows:
         print(", ".join([row[1] for row in rows]))
