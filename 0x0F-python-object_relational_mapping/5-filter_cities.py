@@ -41,4 +41,4 @@ if __name__ == '__main__':
         rows = cursor.fetchall()
 
     if rows:
-        print(", ".join([row[1] for row in rows_selected]))
+        print(", ".join([row[1] for row in rows]))
