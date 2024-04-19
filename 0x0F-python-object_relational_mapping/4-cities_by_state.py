@@ -25,5 +25,6 @@ if __name__ == '__main__':
                 ORDER BY cities.id ASC")
     rows = cursor.fetchall()
 
-    for row in rows:
-        print(row)
+    if rows is not None:
+        for row in rows:
+            print(row)
