@@ -3,24 +3,16 @@
 This script lists all states with a name starting with N (upper N)
 """
 
-import MySQLdb
+
 import sys
+import MySQLdb
 
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
-    db = MySQLdb.connect(host="localhost", port=3306,
-                         user=username, passwd=password, db=database)
-
+    # Connect to MySQL server
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
-    rows = cursor.fetchall()
 
-    for row in rows:
-        print(row)
-
-    cursor.close()
-    db.close()
+    # Execute the SQL query to retrieve all states sorted by id
+    cursor.execute("SELECT * FROM `states` ORDER BY `id`")
+    [print(state) for state in cursor.fetchall() if state[1][0] == "N"]
