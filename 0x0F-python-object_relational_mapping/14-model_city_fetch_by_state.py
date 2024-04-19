@@ -20,10 +20,9 @@ if __name__ == "__main__":
 
     session = Session()
 
-    cities = session.query(City, State).join(State)
+    cities = session.query(City).order_by(City.id).all()
 
-    for city, state in cities.all:
-        print("{}: ({}) {}".format(state.name, city.id, city.name))
+    for city in cities:
+        print("{}: ({}) {}".format.(city.state.name, city.id, city.name))
 
-    session.commit()
     session.close()
