@@ -17,13 +17,15 @@ if __name__ == "__main__":
             "mysql+mysqldb://{}:{}@localhost:3306/{}"
             .format(sys.argv[1], sys.argv[2], sys.argv[3])
             )
+
     Session = sessionmaker(bind=engine)
 
     session = Session()
 
-    results = session.query(State).order_by(State.id).all()
+    states = session.query(State).join(City).order_by(City.id).all()
 
-    for state in results:
-        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
+    for state in states:
+        for city in stae.cities:
+            print("{}: {} -> {}".format(city.id, city.name, state.name))
 
     session.close()
