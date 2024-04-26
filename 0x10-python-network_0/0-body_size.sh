@@ -3,4 +3,4 @@
 # -s to disable the progression display (silent)
 # -i for grep case-sensitive
 # awk to print second column of each line output
-curl -sI "$1" | grep -i "Content-Length" | awk '{print $2}'
+curl -sI "$1" | grep "Content-Length" | cut -d " " -f2
