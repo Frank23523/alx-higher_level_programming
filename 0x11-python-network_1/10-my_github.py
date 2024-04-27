@@ -14,7 +14,4 @@ if __name__ == "__main__":
     url = 'https://api.github.com/user'
     response = requests.get(url, auth=(username, password))
 
-    try:
-        print(response.json()['id'])
-    except:
-        pass
+    print(response.json()['id'])
